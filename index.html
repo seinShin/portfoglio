@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>신세인 | Portfolio</title>
+<style>
+  :root{
+    --navy-950: #0d1230;
+    --navy-900: #131a3d;
+    --navy-800: #1c254f;
+    --gold: #d4af6a;
+    --gold-soft: rgba(212,175,106,0.35);
+    --ink: #eef1fb;
+    --ink-dim: #a9b0d1;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--navy-950);
+    color:var(--ink);
+    font-family:"Pretendard","Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* Header */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    background:rgba(13,18,48,0.72);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(212,175,106,0.15);
+  }
+  .brand{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    font-weight:700;
+    letter-spacing:0.02em;
+  }
+  .brand .name{font-size:16px; color:var(--ink);}
+  .brand .role{font-size:11px; color:var(--gold); letter-spacing:0.18em; text-transform:uppercase;}
+  header nav{display:flex; gap:22px;}
+  header nav a{
+    color:var(--ink-dim);
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing:0.02em;
+    transition:color .2s ease;
+  }
+  header nav a:hover{color:var(--gold);}
+
+  /* Hero */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 24px 80px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-20%; right:-15%;
+    width:60vw; height:60vw;
+    max-width:700px; max-height:700px;
+    border-radius:50%;
+    background:radial-gradient(circle at center, rgba(212,175,106,0.12), transparent 65%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    color:var(--gold);
+    font-size:12px;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    margin-bottom:22px;
+    font-weight:600;
+  }
+  .hero h1{
+    font-size:clamp(42px, 8vw, 88px);
+    font-weight:800;
+    margin:0 0 18px;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+  .hero .role{
+    font-size:clamp(16px, 2.4vw, 22px);
+    color:var(--ink-dim);
+    margin-bottom:28px;
+    font-weight:500;
+  }
+  .stack{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:36px;
+  }
+  .stack span{
+    font-size:12.5px;
+    padding:7px 14px;
+    border:1px solid var(--gold-soft);
+    border-radius:999px;
+    color:var(--ink-dim);
+    letter-spacing:0.01em;
+  }
+  .hero p.desc{
+    max-width:520px;
+    color:var(--ink-dim);
+    font-size:15px;
+    line-height:1.7;
+    margin-bottom:40px;
+  }
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap; justify-content:center;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 26px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .btn-primary{background:var(--gold); color:var(--navy-950);}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{border:1px solid rgba(238,241,251,0.25); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold); transform:translateY(-2px);}
+
+  .scroll-cue{
+    position:absolute;
+    bottom:34px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:11px;
+    color:var(--ink-dim);
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+  .scroll-cue .line{
+    width:1px; height:30px;
+    background:linear-gradient(var(--gold), transparent);
+    animation:scrollpulse 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollpulse{
+    0%,100%{opacity:.3;}
+    50%{opacity:1;}
+  }
+
+  /* Divider label */
+  .section-label{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    max-width:960px;
+    margin:0 auto;
+    padding:70px 24px 26px;
+  }
+  .section-label .num{
+    font-size:12px;
+    color:var(--gold);
+    letter-spacing:0.15em;
+    border:1px solid var(--gold-soft);
+    border-radius:999px;
+    padding:5px 12px;
+  }
+  .section-label .txt{
+    font-size:13px;
+    color:var(--ink-dim);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg, rgba(212,175,106,0.35), transparent);
+  }
+
+  /* Slide gallery */
+  .deck{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px 40px;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+  }
+  .slide{
+    position:relative;
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid rgba(212,175,106,0.18);
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+    background:var(--navy-900);
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .slide.in-view{opacity:1; transform:translateY(0);}
+  .slide img{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+  .slide .tag{
+    position:absolute;
+    top:16px;
+    left:16px;
+    font-size:11px;
+    letter-spacing:0.12em;
+    color:var(--gold);
+    background:rgba(13,18,48,0.75);
+    border:1px solid var(--gold-soft);
+    padding:4px 10px;
+    border-radius:999px;
+  }
+
+  /* Footer */
+  footer{
+    padding:70px 24px 50px;
+    text-align:center;
+    border-top:1px solid rgba(212,175,106,0.12);
+    margin-top:40px;
+  }
+  footer .fname{
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  footer .flinks{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    margin-top:18px;
+    flex-wrap:wrap;
+  }
+  footer a{
+    color:var(--ink-dim);
+    font-size:13px;
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  footer a:hover{color:var(--gold); border-color:var(--gold);}
+  footer .copyright{
+    margin-top:36px;
+    font-size:11px;
+    color:rgba(169,176,209,0.5);
+    letter-spacing:0.05em;
+  }
+
+  @media (max-width:640px){
+    header{padding:14px 18px;}
+    header nav{display:none;}
+    .hero{padding-top:110px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="name">신세인</span>
+    <span class="role">Full-Stack Developer</span>
+  </div>
+  <nav>
+    <a href="#deck">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Portfolio</div>
+  <h1>신세인</h1>
+  <div class="role">Full-Stack Developer</div>
+  <div class="stack">
+    <span>Java · Spring Boot</span>
+    <span>Vue3 / React / Next.js</span>
+    <span>MySQL / PostgreSQL</span>
+  </div>
+  <p class="desc">3년 이상의 웹 서비스 개발 경험을 바탕으로,<br>배움과 도전으로 성장하는 개발자입니다.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#deck">포트폴리오 보기</a>
+    <a class="btn btn-ghost" href="portfolio.pdf" target="_blank" rel="noopener">PDF 다운로드</a>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<div class="section-label" id="deck">
+  <span class="num">01</span>
+  <span class="txt">Portfolio Deck</span>
+</div>
+
+<div class="deck">
+  <div class="slide">
+    <span class="tag">01 / 10</span>
+    <img src="images/slide-01.png" alt="포트폴리오 슬라이드 01" loading="lazy">
+  </div>
+  <div class="slide">
+    <span class="tag">02 / 10</span>
+    <img src="images/slide-02.png" alt="포트폴리오 슬라이드 02" loading="lazy">
+  </div>
+  <div class="slide">
+    <span class="tag">03 / 10</span>
+    <img src="images/slide-03.png" alt="포트폴리오 슬라이드 03" loading="lazy">
+  </div>
+  <div class="slide">
+    <span class="tag">04 / 10</span>
+    <img src="images/slide-04.png" alt="포트폴리오 슬라이드 04" loading="lazy">
+  </div>
+  <div class="slide">
+    <span class="tag">05 / 10</span>
+    <img src="images/slide-05.png" alt="포트폴리오 슬라이드 05" loading="lazy">
+  </div>
+  <div class="slide">
+    <span class="tag">06 / 10</span>
+    <img src="images/slide-06.png" alt="포트폴리오 슬라이드 06" loading="lazy">
+  </div>
+  <div class="slide">
+    <span class="tag">07 / 10</span>
+    <img src="images/slide-07.png" alt="포트폴리오 슬라이드 07" loading="lazy">
+  </div>
+  <div class="slide">
+    <span class="tag">08 / 10</span>
+    <img src="images/slide-08.png" alt="포트폴리오 슬라이드 08" loading="lazy">
+  </div>
+  <div class="slide">
+    <span class="tag">09 / 10</span>
+    <img src="images/slide-09.png" alt="포트폴리오 슬라이드 09" loading="lazy">
+  </div>
+  <div class="slide">
+    <span class="tag">10 / 10</span>
+    <img src="images/slide-10.png" alt="포트폴리오 슬라이드 10" loading="lazy">
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="fname">신세인</div>
+  <div style="color:var(--ink-dim); font-size:13px;">함께 성장할 기회를 기다립니다.</div>
+  <div class="flinks">
+    <a href="mailto:201701924@hufs.ac.kr">Email</a>
+    <a href="portfolio.pdf" target="_blank" rel="noopener">PDF</a>
+  </div>
+  <div class="copyright">© 신세인. All rights reserved.</div>
+</footer>
+
+<script>
+  // Reveal-on-scroll for slides
+  const slides = document.querySelectorAll('.slide');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in-view'); }
+    });
+  }, {threshold:0.15});
+  slides.forEach(s=>io.observe(s));
+</script>
+
+</body>
+</html>
